@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="nav-control">
         {user ? (
           <div className="logged-in">
-            <p>
+            <p onClick={() => navigate("/buy")}>
               <i className="fa-regular fa-star"></i> Credentials : 0
             </p>
             <div className="profile-control">

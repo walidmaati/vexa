@@ -5,7 +5,7 @@ import { AppContext } from "../context/AppContext";
 
 const Navbar = () => {
   const [isToggeled, setIsToggeled] = useState(false);
-  const { user } = useContext(AppContext);
+  const { user, setShowLogin } = useContext(AppContext);
   const navigate = useNavigate();
   return (
     <div className="navbar">
@@ -34,7 +34,7 @@ const Navbar = () => {
         ) : (
           <div className="logged-out">
             <p onClick={() => navigate("/buy")}>$ Pricing</p>
-            <button>Log In</button>
+            <button onClick={() => setShowLogin(true)}>Log In</button>
           </div>
         )}
       </div>

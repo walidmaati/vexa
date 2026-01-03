@@ -4,12 +4,17 @@ import Home from "./pages/Home";
 import Result from "./pages/Result";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Login from "./components/Login";
+import { useContext } from "react";
+import { AppContext } from "./context/AppContext";
 
 const App = () => {
+  const { showLogin } = useContext(AppContext);
   return (
     <>
       <div className="container">
         <Navbar />
+        {showLogin && <Login />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/result" element={<Result />} />

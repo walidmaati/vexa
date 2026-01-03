@@ -13,12 +13,17 @@ li {
   list-style: none; }
 
 .container {
+  width: 100%;
   min-height: 100vh;
-  position: relative;
+  position: absolute;
   background: radial-gradient(circle, #fff, #ddd); }
 
-.instructions .instruction {
+.instructions .instruction, .credits-container .credits .plans .plan, .login form {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+
+.credits-container .credits .plans .plan button {
+  left: 50%;
+  transform: translateX(-50%); }
 
 .hero .hero-heading {
   top: 50%;
@@ -28,12 +33,15 @@ li {
 /* @Navbar_Styling */
 .navbar {
   width: 100%;
-  height: 82px;
+  height: 72px;
   position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 9999999; }
+  z-index: 9999999;
+  backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.2);
+  top: 0; }
   .navbar .nav-heading {
     position: relative;
     left: 15px; }
@@ -42,8 +50,8 @@ li {
       align-items: center;
       gap: 5px; }
       .navbar .nav-heading a img {
-        width: 80px;
-        height: 80px; }
+        width: 70px;
+        height: 70px; }
       .navbar .nav-heading a p {
         color: #fe7743;
         font-size: 26px; }
@@ -254,46 +262,53 @@ li {
   .generate-section h1 {
     text-align: center;
     color: #2b2a2a; }
-  .generate-section .generate-btn {
-    cursor: pointer;
-    border: 0;
-    padding: 0.9rem 2rem;
-    position: relative;
-    display: block;
-    letter-spacing: 0.05rem;
-    margin: 5px auto;
-    font-weight: 700;
-    font-size: 16px;
-    border-radius: 15px;
-    overflow: hidden;
-    background: #0ba6df;
-    color: #f5f2f2; }
-  .generate-section .generate-btn span {
-    position: relative;
-    z-index: 10;
-    transition: color 0.4s; }
-  .generate-section .generate-btn:hover span {
-    color: #2b2a2a; }
-  .generate-section .generate-btn::before,
-  .generate-section .generate-btn::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; }
-  .generate-section .generate-btn::before {
-    content: "";
-    background: #2b2a2a;
-    width: 120%;
-    left: -10%;
-    transform: skew(30deg);
-    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1); }
-  .generate-section .generate-btn:hover::before {
-    transform: translate3d(100%, 0, 0); }
+
+.generate-btn {
+  cursor: pointer;
+  border: 0;
+  padding: 0.9rem 2rem;
+  position: relative;
+  display: block;
+  letter-spacing: 0.05rem;
+  margin: 5px auto;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #0ba6df;
+  color: #f5f2f2; }
+
+.generate-btn span {
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s; }
+
+.generate-btn:hover span {
+  color: #2b2a2a; }
+
+.generate-btn::before,
+.generate-btn::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; }
+
+.generate-btn::before {
+  content: "";
+  background: #2b2a2a;
+  width: 120%;
+  left: -10%;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1); }
+
+.generate-btn:hover::before {
+  transform: translate3d(100%, 0, 0); }
 
 /* @Footer_Styling */
 .footer {
+  width: 100%;
   height: 62px;
   position: relative;
   bottom: 0;
@@ -325,3 +340,195 @@ li {
       .footer .social-media ul a {
         color: #2b2a2a;
         font-size: 20px; }
+
+/* @Result_Styling */
+.result {
+  width: 100%;
+  height: calc(100vh - 162px);
+  position: relative; }
+  .result .loading-image {
+    width: 50%;
+    height: 400px;
+    position: relative;
+    margin: 100px auto; }
+    .result .loading-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+    .result .loading-image span {
+      height: 2px;
+      display: block;
+      background-color: #fe7743;
+      position: absolute;
+      bottom: 0; }
+    .result .loading-image .w-full {
+      width: 100%;
+      transition: 0.5s linear;
+      transition-duration: 10s; }
+    .result .loading-image .w-0 {
+      width: 0; }
+    .result .loading-image a {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      color: #fe7743;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px; }
+  .result .prompt-area {
+    width: 50%;
+    position: relative;
+    margin: 0 auto;
+    top: -50px; }
+    .result .prompt-area textarea {
+      width: 100%;
+      min-height: 120px;
+      max-height: 120px;
+      resize: none;
+      padding: 12px;
+      background-color: #2b2a2a;
+      color: #f5f2f2;
+      font-size: 16px;
+      border: 0;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
+    .result .prompt-area button {
+      position: absolute;
+      width: 120px;
+      height: 32px;
+      right: 5px;
+      bottom: 12.5px;
+      background-color: #f5f2f2;
+      color: #2b2a2a;
+      cursor: pointer;
+      border: 0;
+      border-radius: 10px; }
+  .result .generate-another {
+    width: 50%;
+    top: -50px; }
+
+/* @Credits_Styling */
+.credits-container {
+  width: 100%;
+  height: calc(100vh - 62px);
+  position: relative; }
+  .credits-container .credits {
+    width: 100%;
+    height: calc(100vh - 82px);
+    position: absolute;
+    top: 82px; }
+    .credits-container .credits span:first-child {
+      width: fit-content;
+      display: block;
+      color: #2b2a2a;
+      margin: 25px auto;
+      text-align: center;
+      text-align: center;
+      border: 1px solid #fe7743;
+      border-radius: 5px;
+      box-shadow: inset 0 0 5px #fe7743;
+      padding: 4px 12px; }
+    .credits-container .credits h1 {
+      color: #2b2a2a;
+      text-align: center; }
+    .credits-container .credits .plans {
+      width: 70%;
+      margin: 50px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px; }
+      .credits-container .credits .plans .plan {
+        width: 100%;
+        position: relative;
+        min-height: 250px;
+        border-radius: 15px;
+        padding: 8px 22px; }
+        .credits-container .credits .plans .plan img {
+          width: 70px;
+          height: 70px; }
+        .credits-container .credits .plans .plan h3 {
+          font-size: 16px;
+          color: #fe7743; }
+        .credits-container .credits .plans .plan span {
+          color: #2b2a2a;
+          font-size: 32px; }
+        .credits-container .credits .plans .plan button {
+          position: absolute;
+          width: 60%;
+          bottom: 10px;
+          color: #f5f2f2;
+          background-color: #0ba6df;
+          padding: 6px;
+          border: 0;
+          border-radius: 5px;
+          cursor: pointer; }
+
+/* @Login_Styling */
+.login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .login form {
+    padding: 40px;
+    background-color: #f5f2f2;
+    position: relative;
+    border-radius: 20px; }
+    .login form h1 {
+      color: #2b2a2a;
+      text-align: center; }
+    .login form p {
+      color: #2b2a2a; }
+      .login form p span {
+        cursor: pointer;
+        color: #0ba6df; }
+    .login form .input-group {
+      width: 100%;
+      position: relative;
+      margin: 5px auto; }
+      .login form .input-group i {
+        color: #2b2a2a;
+        position: absolute;
+        left: 6px;
+        top: 10px; }
+      .login form .input-group .fa-user {
+        top: 9.5px; }
+      .login form .input-group .fa-lock {
+        top: 9px; }
+      .login form .input-group input {
+        width: 100%;
+        padding: 8px 28px;
+        border: 1px solid #ddd;
+        border-radius: 10px; }
+    .login form a {
+      color: #0ba6df; }
+    .login form button {
+      width: 100%;
+      margin: 10px auto;
+      color: #f5f2f2;
+      background-color: #0ba6df;
+      cursor: pointer;
+      border: 0;
+      border-radius: 10px;
+      padding: 8px; }
+    .login form .fa-close {
+      color: #2b2a2a;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      cursor: pointer; }

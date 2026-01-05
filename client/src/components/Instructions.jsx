@@ -1,8 +1,15 @@
 import React from "react";
+import { motion } from "motion/react";
 
 const Instructions = () => {
   return (
-    <div className="instructions">
+    <motion.div
+      className="instructions"
+      initial={{ opacity: 0.2, y: 72 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
       <h3>How it works ?</h3>
       <p className="hook">Transform prompts into real images</p>
       <div className="instruction">
@@ -35,7 +42,7 @@ const Instructions = () => {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

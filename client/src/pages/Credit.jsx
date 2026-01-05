@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import logo from "../layout/img/transparent_logo.png";
 import { AppContext } from "../context/AppContext";
+import { motion } from "motion/react";
 
 const Credit = () => {
   const plans = [
@@ -8,26 +9,35 @@ const Credit = () => {
       id: "Basic",
       price: 2.99,
       credits: 100,
-      description: "Better for a personal use",
+      description: "Personal use",
     },
     {
       id: "Advanced",
       price: 4.99,
       credits: 500,
-      description: "Better for professional use",
+      description: "Professional use",
     },
     {
-      id: "Basic",
+      id: "Business",
       price: 9.99,
       credits: 1000,
-      description: "Better for business use",
+      description: "Business use",
     },
   ];
 
   const { user } = useContext(AppContext);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="credits-container">
+    <motion.div
+      className="credits-container"
+      initial={{ opacity: 0.2, y: 72 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
       <div className="credits">
         <span>Our Plans</span>
         <h1>Choose the plan</h1>
@@ -45,7 +55,7 @@ const Credit = () => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

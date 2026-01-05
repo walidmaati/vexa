@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
+import { motion } from "motion/react";
 
 const Login = () => {
   const [state, setState] = useState("Login");
@@ -14,7 +15,12 @@ const Login = () => {
 
   return (
     <div className="login">
-      <form>
+      <motion.form
+        initial={{ opacity: 0.2, y: 72 }}
+        transition={{ duration: 0.5 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
         <h1>{state}</h1>
         <p style={{ textAlign: "center" }}>
           Welcome back! Please sign to continue
@@ -33,8 +39,7 @@ const Login = () => {
           <i className="fa-solid fa-lock"></i>
           <input type="password" placeholder="Password" />
         </div>
-        <a href="#">Forgot password?</a>
-        <br />
+        {state == "Login" && <a href="#">Forgot password?</a>}
         <button>{state === "Login" ? "Login" : "Create account"}</button>
         {state === "Login" ? (
           <p onClick={() => setState("Sign up")}>
@@ -50,7 +55,7 @@ const Login = () => {
           onClick={() => setShowLogin(false)}
           className="fa-solid fa-close"
         ></i>
-      </form>
+      </motion.form>
     </div>
   );
 };

@@ -7,12 +7,14 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import { useContext } from "react";
 import { AppContext } from "./context/AppContext";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const { showLogin } = useContext(AppContext);
   return (
     <>
       <div className="container">
+        <ToastContainer position="bottom-right" />
         <Navbar />
         {showLogin && <Login />}
         <Routes>

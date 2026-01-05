@@ -18,7 +18,7 @@ await connectDB();
 
 // Configuring the routes with the app.use
 app.use("/api/user", userRouter);
-app.use("/api/image/", imageRouter);
+app.use("/api/image", imageRouter);
 
 // Establishing the server
 app.listen(PORT);

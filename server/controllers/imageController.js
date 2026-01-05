@@ -13,11 +13,11 @@ export const generateImage = async (req, res) => {
     if (!user || !prompt) {
       return res.json({ success: false, message: "Missing details" });
     }
-    if (user.credits == 0 || user.credits < 0) {
+    if (user.credit == 0 || user.credit < 0) {
       return res.json({ success: false, message: "No credit balance" });
     }
 
-    // Assinging the prompt to form data
+    // Assigning the prompt to form data
     const formData = new FormData();
     formData.append("prompt", prompt);
 
@@ -27,7 +27,9 @@ export const generateImage = async (req, res) => {
       formData,
       {
         headers: {
-          "x-api-key": process.env.CLIPDROP_API,
+          "x-api-key":
+            "54f292958727dfbb92429ad1def54dc2013cb5d41b9fa7cb965932905a8506260d1b78a8367525cac9c18949f91d0984", // API ClipDrop Key
+          ...formData.getHeaders(), // Adding the multipart/form-data headers
         },
         // Array buffer used to return response type that match the files
         responseType: "arraybuffer",
@@ -41,7 +43,8 @@ export const generateImage = async (req, res) => {
     const resultImage = `data:image/png;base64,${base64Image}`;
 
     // Updating the credits of the user, after generating the image
-    await userModel.findByIdAndUpdate(user._id, { credit: user.credit - 1 });
+    await userModel.findByIdAndUpdate(user._id, { credit: user.credit - 1 }); // <-- also fixed property name
+
     res.json({
       success: true,
       message: "Image generated",

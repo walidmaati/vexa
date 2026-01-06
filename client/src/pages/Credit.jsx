@@ -2,30 +2,82 @@ import React, { useContext, useEffect } from "react";
 import logo from "../layout/img/transparent_logo.png";
 import { AppContext } from "../context/AppContext";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const Credit = () => {
   const plans = [
     {
       id: "Basic",
-      price: 2.99,
+      price: 10,
       credits: 100,
       description: "Personal use",
     },
     {
       id: "Advanced",
-      price: 4.99,
+      price: 50,
       credits: 500,
       description: "Professional use",
     },
     {
       id: "Business",
-      price: 9.99,
+      price: 250,
       credits: 1000,
       description: "Business use",
     },
   ];
 
-  const { user } = useContext(AppContext);
+  const { user, loadCreditsData, token, setShowLogin } = useContext(AppContext);
+  const navigate = useNavigate();
+  const initPay = async (order) => {
+    const options = {
+      key: "rzp_test_us_S0k370bDdVhm2E",
+      amount: order.amount,
+      currency: order.currency,
+      name: "Credits Payment",
+      description: "Credits Payment",
+      order_id: order.id,
+      receipt: order.receipt,
+      handler: async (response) => {
+        try {
+          const { data } = await axios.post(
+            "http://localhost:3001/api/user/verify-razor",
+            response,
+            { headers: token }
+          );
+          if (data.success) {
+            loadCreditsData();
+            navigate("/");
+            toast.success("Credit added successfully");
+          }
+        } catch (error) {
+          toast.error(error.message);
+        }
+      },
+    };
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
+  const paymentRazorpay = async (planId) => {
+    try {
+      if (!user) {
+        setShowLogin(true);
+      }
+      const { data } = await axios.post(
+        "http://localhost:3001/api/user/pay-razor",
+        { planId },
+        {
+          headers: { token },
+        }
+      );
+      if (data.success) {
+        initPay(data.order);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -50,7 +102,13 @@ const Credit = () => {
               <span>
                 ${plan.price} : <strong>{plan.credits} credit</strong>
               </span>
-              <button>{user ? "Purchase" : "Get started"}</button>
+              <button
+                onClick={() => {
+                  paymentRazorpay(plan.id);
+                }}
+              >
+                {user ? "Purchase" : "Get started"}
+              </button>
             </div>
           ))}
         </div>

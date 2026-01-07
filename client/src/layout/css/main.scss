@@ -1,4 +1,5 @@
 @import "../scss/normalize";
+@import "../scss/mixin";
 
 /* @Navbar_Styling */
 .navbar {
@@ -9,8 +10,6 @@
   justify-content: space-between;
   align-items: center;
   z-index: 9999999;
-  backdrop-filter: blur(20px);
-  background: rgba(0, 0, 0, 0.2);
   top: 0;
   .nav-heading {
     position: relative;
@@ -19,13 +18,28 @@
       display: flex;
       align-items: center;
       gap: 5px;
+
       img {
         width: 70px;
         height: 70px;
+        @include media(medium) {
+          width: 50px;
+          height: 50px;
+        }
+        @include media(small) {
+          width: 40px;
+          height: 40px;
+        }
       }
       p {
-        color: $orange;
+        color: $black;
         font-size: 26px;
+        @include media(medium) {
+          font-size: 20px;
+        }
+        @include media(small) {
+          font-size: 16px;
+        }
       }
     }
   }
@@ -37,7 +51,7 @@
       align-items: center;
       gap: 25px;
       p {
-        color: $orange;
+        color: $black;
         cursor: pointer;
         font-weight: bold;
       }
@@ -57,20 +71,26 @@
       align-items: center;
       gap: 25px;
       p {
-        color: $orange;
+        color: $black;
         background-color: $light;
         padding: 4px 14px;
-        font-weight: bold;
         cursor: pointer;
         border-radius: 15px;
+        @include media(small) {
+          padding: 4px 12px;
+          font-size: 14px;
+        }
         i {
           position: relative;
           top: 1px;
-          color: $orange;
+          color: $black;
         }
       }
       span {
-        color: $orange;
+        color: $black;
+        @include media(small) {
+          font-size: 14px;
+        }
       }
       .profile-control {
         display: inline-flex;
@@ -83,10 +103,13 @@
           img {
             width: 32px;
             height: 32px;
-            border: 1px solid #666;
             border-radius: 50%;
             padding: 2px;
             cursor: pointer;
+            @include media(small) {
+              width: 25px;
+              height: 25px;
+            }
           }
           button {
             position: absolute;
@@ -113,21 +136,23 @@
 .hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/layered-waves.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   position: relative;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  top: 82px;
   .hero-heading {
     position: absolute;
     @extend %full-center;
     h1 {
       width: 60%;
       margin: 0 auto;
-      color: $white;
+      color: $black;
       text-align: center;
       font-size: 45px;
+      @include media(medium) {
+        width: 85%;
+      }
+      @include media(small) {
+        font-size: 35px;
+      }
       span {
         color: $blue;
       }
@@ -137,12 +162,15 @@
       display: flex;
       justify-content: center;
       span {
-        color: $light;
+        color: $black;
         text-align: center;
         font-weight: 200;
         font-size: 20px;
         font-variant: all-small-caps;
         pointer-events: none;
+        @include media(small) {
+          font-size: 14px;
+        }
       }
     }
     button {
@@ -194,6 +222,9 @@
       gap: 10px;
       width: 80%;
       height: 300px;
+      @include media(medium) {
+        width: 95%;
+      }
       .gallery-flex {
         flex: 1;
         display: flex;
@@ -238,6 +269,9 @@
     color: $black;
     text-align: center;
     font-size: 42px;
+    @include media(small) {
+      font-size: 32px;
+    }
   }
   .hook {
     color: $blue;
@@ -251,6 +285,9 @@
     display: flex;
     align-items: center;
     gap: 25px;
+    @include media(medium) {
+      width: 85%;
+    }
     @extend %box-shadow;
     i {
       font-size: 42px;
@@ -258,14 +295,23 @@
       background-color: $light;
       padding: 8px;
       border-radius: 5px;
+      @include media(small) {
+        font-size: 32px;
+      }
     }
     h4 {
       font-size: 25px;
       color: $black;
+      @include media(small) {
+        font-size: 20px;
+      }
     }
     p {
       font-size: 16px;
       color: $black;
+      @include media(small) {
+        font-size: 14px;
+      }
     }
   }
 }
@@ -342,12 +388,19 @@
       width: 60px;
       height: 60px;
       pointer-events: none;
+      @include media(small) {
+        width: 40px;
+        height: 40px;
+      }
     }
     span {
-      color: $orange;
+      color: $blue;
       font-weight: bold;
       font-variant: all-small-caps;
       pointer-events: none;
+      @include media(small) {
+        font-size: 14px;
+      }
     }
   }
   .social-media {
@@ -359,6 +412,9 @@
       a {
         color: $black;
         font-size: 20px;
+        @include media(small) {
+          font-size: 16px;
+        }
       }
     }
   }
@@ -373,6 +429,9 @@
     height: 400px;
     position: relative;
     margin: 100px auto;
+    @include media(medium) {
+      width: 75%;
+    }
     img {
       width: 100%;
       height: 100%;
@@ -381,7 +440,7 @@
     span {
       height: 2px;
       display: block;
-      background-color: $orange;
+      background-color: $black;
       position: absolute;
       bottom: 0;
     }
@@ -400,7 +459,7 @@
       cursor: pointer;
       background-color: rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(10px);
-      color: $orange;
+      color: $black;
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -415,6 +474,9 @@
     position: relative;
     margin: 0 auto;
     top: -50px;
+    @include media(medium) {
+      width: 75%;
+    }
     textarea {
       width: 100%;
       min-height: 120px;
@@ -456,30 +518,27 @@
     height: calc(100vh - 82px);
     position: absolute;
     top: 82px;
-    span:first-child {
-      width: fit-content;
-      display: block;
-      color: $black;
-      margin: 25px auto;
-      text-align: center;
-      text-align: center;
-      border: 1px solid $orange;
-      border-radius: 5px;
-      box-shadow: inset 0 0 5px $orange;
-      padding: 4px 12px;
-    }
     h1 {
       color: $black;
       text-align: center;
     }
     .plans {
       width: 70%;
-
       margin: 50px auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 25px;
+      @include media(large) {
+        width: 95%;
+      }
+      @include media(medium) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include media(small) {
+        grid-template-columns: 100%;
+        height: 80%;
+        overflow-x: hidden;
+      }
       .plan {
         width: 100%;
         position: relative;
@@ -490,14 +549,24 @@
         img {
           width: 70px;
           height: 70px;
+          @include media(medium) {
+            width: 50px;
+            height: 50px;
+          }
         }
         h3 {
           font-size: 16px;
-          color: $orange;
+          color: $lightblue;
+          @include media(medium) {
+            font-size: 14px;
+          }
         }
         span {
           color: $black;
           font-size: 32px;
+          @include media(medium) {
+            font-size: 24px;
+          }
         }
         button {
           position: absolute;

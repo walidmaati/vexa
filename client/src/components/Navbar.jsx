@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import logo from "../layout/img/transparent_logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import avatar from "../layout/img/avatar.png";
 
 const Navbar = () => {
   const [isToggeled, setIsToggeled] = useState(false);
@@ -24,7 +25,7 @@ const Navbar = () => {
             <div className="profile-control">
               <span>Hello, {user.name}</span>
               <div>
-                <img onClick={() => setIsToggeled(!isToggeled)} src={logo} />
+                <img onClick={() => setIsToggeled(!isToggeled)} src={avatar} />
                 <button
                   onClick={logout}
                   className={`${isToggeled ? "hovered-btn" : ""}`}

@@ -1,0 +1,1 @@
+Our platform allows users to generate images from text prompts using the ClipDrop AI API. You simply enter a short description of the image you want, and the system uses your ClipDrop API key to send the request and generate a high-quality image. The process is fast, easy to use, and designed for anyone who wants to create images from simple text prompts.

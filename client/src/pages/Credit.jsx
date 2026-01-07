@@ -91,7 +91,6 @@ const Credit = () => {
       viewport={{ once: true }}
     >
       <div className="credits">
-        <span>Our Plans</span>
         <h1>Choose the plan</h1>
         <div className="plans">
           {plans.map((plan, index) => (

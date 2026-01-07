@@ -39,8 +39,6 @@ li {
   justify-content: space-between;
   align-items: center;
   z-index: 9999999;
-  backdrop-filter: blur(20px);
-  background: rgba(0, 0, 0, 0.2);
   top: 0; }
   .navbar .nav-heading {
     position: relative;
@@ -52,9 +50,23 @@ li {
       .navbar .nav-heading a img {
         width: 70px;
         height: 70px; }
+        @media (max-width: 1024px) {
+          .navbar .nav-heading a img {
+            width: 50px;
+            height: 50px; } }
+        @media (max-width: 768px) {
+          .navbar .nav-heading a img {
+            width: 40px;
+            height: 40px; } }
       .navbar .nav-heading a p {
-        color: #fe7743;
+        color: #2b2a2a;
         font-size: 26px; }
+        @media (max-width: 1024px) {
+          .navbar .nav-heading a p {
+            font-size: 20px; } }
+        @media (max-width: 768px) {
+          .navbar .nav-heading a p {
+            font-size: 16px; } }
   .navbar .nav-control {
     position: relative;
     right: 15px; }
@@ -63,7 +75,7 @@ li {
       align-items: center;
       gap: 25px; }
       .navbar .nav-control .logged-out p {
-        color: #fe7743;
+        color: #2b2a2a;
         cursor: pointer;
         font-weight: bold; }
       .navbar .nav-control .logged-out button {
@@ -80,18 +92,24 @@ li {
       align-items: center;
       gap: 25px; }
       .navbar .nav-control .logged-in p {
-        color: #fe7743;
+        color: #2b2a2a;
         background-color: #bde8f5;
         padding: 4px 14px;
-        font-weight: bold;
         cursor: pointer;
         border-radius: 15px; }
+        @media (max-width: 768px) {
+          .navbar .nav-control .logged-in p {
+            padding: 4px 12px;
+            font-size: 14px; } }
         .navbar .nav-control .logged-in p i {
           position: relative;
           top: 1px;
-          color: #fe7743; }
+          color: #2b2a2a; }
       .navbar .nav-control .logged-in span {
-        color: #fe7743; }
+        color: #2b2a2a; }
+        @media (max-width: 768px) {
+          .navbar .nav-control .logged-in span {
+            font-size: 14px; } }
       .navbar .nav-control .logged-in .profile-control {
         display: inline-flex;
         align-items: center;
@@ -103,10 +121,13 @@ li {
           .navbar .nav-control .logged-in .profile-control div img {
             width: 32px;
             height: 32px;
-            border: 1px solid #666;
             border-radius: 50%;
             padding: 2px;
             cursor: pointer; }
+            @media (max-width: 768px) {
+              .navbar .nav-control .logged-in .profile-control div img {
+                width: 25px;
+                height: 25px; } }
           .navbar .nav-control .logged-in .profile-control div button {
             position: absolute;
             background: linear-gradient(to right bottom, #0ba6df, #bde8f5);
@@ -125,20 +146,22 @@ li {
 .hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/layered-waves.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   position: relative;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); }
+  top: 82px; }
   .hero .hero-heading {
     position: absolute; }
     .hero .hero-heading h1 {
       width: 60%;
       margin: 0 auto;
-      color: #f5f2f2;
+      color: #2b2a2a;
       text-align: center;
       font-size: 45px; }
+      @media (max-width: 1024px) {
+        .hero .hero-heading h1 {
+          width: 85%; } }
+      @media (max-width: 768px) {
+        .hero .hero-heading h1 {
+          font-size: 35px; } }
       .hero .hero-heading h1 span {
         color: #0ba6df; }
     .hero .hero-heading .animated-text {
@@ -146,12 +169,15 @@ li {
       display: flex;
       justify-content: center; }
       .hero .hero-heading .animated-text span {
-        color: #bde8f5;
+        color: #2b2a2a;
         text-align: center;
         font-weight: 200;
         font-size: 20px;
         font-variant: all-small-caps;
         pointer-events: none; }
+        @media (max-width: 768px) {
+          .hero .hero-heading .animated-text span {
+            font-size: 14px; } }
     .hero .hero-heading button {
       cursor: pointer;
       border: 0;
@@ -195,6 +221,9 @@ li {
       gap: 10px;
       width: 80%;
       height: 300px; }
+      @media (max-width: 1024px) {
+        .hero .hero-heading .styles-gallery {
+          width: 95%; } }
       .hero .hero-heading .styles-gallery .gallery-flex {
         flex: 1;
         display: flex;
@@ -231,6 +260,9 @@ li {
     color: #2b2a2a;
     text-align: center;
     font-size: 42px; }
+    @media (max-width: 768px) {
+      .instructions h3 {
+        font-size: 32px; } }
   .instructions .hook {
     color: #0ba6df;
     font-weight: 200;
@@ -242,18 +274,30 @@ li {
     display: flex;
     align-items: center;
     gap: 25px; }
+    @media (max-width: 1024px) {
+      .instructions .instruction {
+        width: 85%; } }
     .instructions .instruction i {
       font-size: 42px;
       color: #0ba6df;
       background-color: #bde8f5;
       padding: 8px;
       border-radius: 5px; }
+      @media (max-width: 768px) {
+        .instructions .instruction i {
+          font-size: 32px; } }
     .instructions .instruction h4 {
       font-size: 25px;
       color: #2b2a2a; }
+      @media (max-width: 768px) {
+        .instructions .instruction h4 {
+          font-size: 20px; } }
     .instructions .instruction p {
       font-size: 16px;
       color: #2b2a2a; }
+      @media (max-width: 768px) {
+        .instructions .instruction p {
+          font-size: 14px; } }
 
 /* @GenerateBtn_Styling */
 .generate-section {
@@ -326,11 +370,18 @@ li {
       width: 60px;
       height: 60px;
       pointer-events: none; }
+      @media (max-width: 768px) {
+        .footer .footer-logo img {
+          width: 40px;
+          height: 40px; } }
     .footer .footer-logo span {
-      color: #fe7743;
+      color: #0ba6df;
       font-weight: bold;
       font-variant: all-small-caps;
       pointer-events: none; }
+      @media (max-width: 768px) {
+        .footer .footer-logo span {
+          font-size: 14px; } }
   .footer .social-media {
     position: relative;
     right: 50px; }
@@ -340,6 +391,9 @@ li {
       .footer .social-media ul a {
         color: #2b2a2a;
         font-size: 20px; }
+        @media (max-width: 768px) {
+          .footer .social-media ul a {
+            font-size: 16px; } }
 
 /* @Result_Styling */
 .result {
@@ -351,6 +405,9 @@ li {
     height: 400px;
     position: relative;
     margin: 100px auto; }
+    @media (max-width: 1024px) {
+      .result .loading-image {
+        width: 75%; } }
     .result .loading-image img {
       width: 100%;
       height: 100%;
@@ -358,7 +415,7 @@ li {
     .result .loading-image span {
       height: 2px;
       display: block;
-      background-color: #fe7743;
+      background-color: #2b2a2a;
       position: absolute;
       bottom: 0; }
     .result .loading-image .w-full {
@@ -374,7 +431,7 @@ li {
       cursor: pointer;
       background-color: rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(10px);
-      color: #fe7743;
+      color: #2b2a2a;
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -387,6 +444,9 @@ li {
     position: relative;
     margin: 0 auto;
     top: -50px; }
+    @media (max-width: 1024px) {
+      .result .prompt-area {
+        width: 75%; } }
     .result .prompt-area textarea {
       width: 100%;
       min-height: 120px;
@@ -424,27 +484,26 @@ li {
     height: calc(100vh - 82px);
     position: absolute;
     top: 82px; }
-    .credits-container .credits span:first-child {
-      width: fit-content;
-      display: block;
-      color: #2b2a2a;
-      margin: 25px auto;
-      text-align: center;
-      text-align: center;
-      border: 1px solid #fe7743;
-      border-radius: 5px;
-      box-shadow: inset 0 0 5px #fe7743;
-      padding: 4px 12px; }
     .credits-container .credits h1 {
       color: #2b2a2a;
       text-align: center; }
     .credits-container .credits .plans {
       width: 70%;
       margin: 50px auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 25px; }
+      @media (max-width: 1300px) {
+        .credits-container .credits .plans {
+          width: 95%; } }
+      @media (max-width: 1024px) {
+        .credits-container .credits .plans {
+          grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 768px) {
+        .credits-container .credits .plans {
+          grid-template-columns: 100%;
+          height: 80%;
+          overflow-x: hidden; } }
       .credits-container .credits .plans .plan {
         width: 100%;
         position: relative;
@@ -454,12 +513,22 @@ li {
         .credits-container .credits .plans .plan img {
           width: 70px;
           height: 70px; }
+          @media (max-width: 1024px) {
+            .credits-container .credits .plans .plan img {
+              width: 50px;
+              height: 50px; } }
         .credits-container .credits .plans .plan h3 {
           font-size: 16px;
-          color: #fe7743; }
+          color: rgba(37, 152, 194, 0.91); }
+          @media (max-width: 1024px) {
+            .credits-container .credits .plans .plan h3 {
+              font-size: 14px; } }
         .credits-container .credits .plans .plan span {
           color: #2b2a2a;
           font-size: 32px; }
+          @media (max-width: 1024px) {
+            .credits-container .credits .plans .plan span {
+              font-size: 24px; } }
         .credits-container .credits .plans .plan button {
           position: absolute;
           width: 60%;

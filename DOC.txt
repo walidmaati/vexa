@@ -1,0 +1,3 @@
+Vexa c'est un SaaS transforme un texte en image grâce à l’intelligence artificielle
+Un prompt est saisi et une image est générée rapidement
+La plateforme est simple à utiliser et aide à créer des images uniques
